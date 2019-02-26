@@ -1,0 +1,6 @@
+MODULE incr_struct
+DESCRIPTION incr_struct function
+VERSION 1.0
+SOURCE IDL
+BUILD_DATE AUG 15 2006
+FUNCTION	incr_struct	0	IDL_MAXPARAMS

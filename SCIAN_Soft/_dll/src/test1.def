@@ -1,0 +1,4 @@
+LIBRARY			test1
+DESCRIPTION		'Demonstrates use of IDL Dynamic Loadable Modules'
+
+EXPORTS			IDL_Load_1		@1

@@ -1,0 +1,247 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../open64/lib//be.exe
+	// nvopencc 4.1 built on 2012-09-25
+
+	//-----------------------------------------------------------
+	// Compiling C:/Users/Ivan/AppData/Local/Temp/tmpxft_00002754_00000000-11_JCudaMatrixVectorMultKernel3.cpp3.i (C:/Users/Ivan/AppData/Local/Temp/ccBI#.a08792)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"C:/Users/Ivan/AppData/Local/Temp/tmpxft_00002754_00000000-10_JCudaMatrixVectorMultKernel3.cudafe2.gpu"
+	.file	2	"c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h"
+	.file	3	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\crt/device_runtime.h"
+	.file	4	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\host_defines.h"
+	.file	5	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\builtin_types.h"
+	.file	6	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_types.h"
+	.file	7	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\host_defines.h"
+	.file	8	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\driver_types.h"
+	.file	9	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_types.h"
+	.file	10	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_types.h"
+	.file	11	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\vector_types.h"
+	.file	12	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\builtin_types.h"
+	.file	13	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\device_launch_parameters.h"
+	.file	14	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\crt\storage_class.h"
+	.file	15	"kernels/JCudaMatrixVectorMultKernel3.cu"
+	.file	16	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\common_functions.h"
+	.file	17	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions.h"
+	.file	18	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_constants.h"
+	.file	19	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_functions.h"
+	.file	20	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_11_atomic_functions.h"
+	.file	21	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_12_atomic_functions.h"
+	.file	22	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_13_double_functions.h"
+	.file	23	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_atomic_functions.h"
+	.file	24	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_atomic_functions.h"
+	.file	25	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_intrinsics.h"
+	.file	26	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_30_intrinsics.h"
+	.file	27	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_intrinsics.h"
+	.file	28	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_functions.h"
+	.file	29	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_fetch_functions.h"
+	.file	30	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_indirect_functions.h"
+	.file	31	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_indirect_functions.h"
+	.file	32	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions_dbl_ptx1.h"
+
+
+	.entry surface_area (
+		.param .s32 __cudaparm_surface_area_size_faces,
+		.param .u64 __cudaparm_surface_area_face_verts,
+		.param .u64 __cudaparm_surface_area_coord_verts,
+		.param .u64 __cudaparm_surface_area_partial_area)
+	{
+	.reg .u16 %rh<4>;
+	.reg .u32 %r<13>;
+	.reg .u64 %rd<20>;
+	.reg .f32 %f<4>;
+	.reg .f64 %fd<38>;
+	.reg .pred %p<3>;
+	.loc	15	2	0
+$LDWbegin_surface_area:
+	mov.u16 	%rh1, %ctaid.x;
+	mov.u16 	%rh2, %ntid.x;
+	mul.wide.u16 	%r1, %rh1, %rh2;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm_surface_area_size_faces];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_0_1026;
+	.loc	15	8	0
+	ld.param.u64 	%rd1, [__cudaparm_surface_area_face_verts];
+	mul.lo.s32 	%r5, %r3, 3;
+	cvt.s64.s32 	%rd2, %r5;
+	mul.wide.s32 	%rd3, %r5, 4;
+	add.u64 	%rd4, %rd1, %rd3;
+	ld.global.s32 	%r6, [%rd4+0];
+	.loc	15	9	0
+	ld.global.s32 	%r7, [%rd4+4];
+	.loc	15	10	0
+	ld.global.s32 	%r8, [%rd4+8];
+	.loc	15	12	0
+	ld.param.u64 	%rd5, [__cudaparm_surface_area_coord_verts];
+	mul.lo.s32 	%r9, %r6, 3;
+	cvt.s64.s32 	%rd6, %r9;
+	mul.wide.s32 	%rd7, %r9, 8;
+	add.u64 	%rd8, %rd5, %rd7;
+	ld.global.f64 	%fd1, [%rd8+0];
+	.loc	15	13	0
+	ld.global.f64 	%fd2, [%rd8+8];
+	.loc	15	14	0
+	ld.global.f64 	%fd3, [%rd8+16];
+	.loc	15	16	0
+	mul.lo.s32 	%r10, %r7, 3;
+	cvt.s64.s32 	%rd9, %r10;
+	mul.wide.s32 	%rd10, %r10, 8;
+	add.u64 	%rd11, %rd5, %rd10;
+	ld.global.f64 	%fd4, [%rd11+0];
+	.loc	15	17	0
+	ld.global.f64 	%fd5, [%rd11+8];
+	.loc	15	18	0
+	ld.global.f64 	%fd6, [%rd11+16];
+	.loc	15	20	0
+	mul.lo.s32 	%r11, %r8, 3;
+	cvt.s64.s32 	%rd12, %r11;
+	mul.wide.s32 	%rd13, %r11, 8;
+	add.u64 	%rd14, %rd5, %rd13;
+	ld.global.f64 	%fd7, [%rd14+0];
+	.loc	15	21	0
+	ld.global.f64 	%fd8, [%rd14+8];
+	.loc	15	22	0
+	ld.global.f64 	%fd9, [%rd14+16];
+	.loc	15	38	0
+	sub.f64 	%fd10, %fd3, %fd9;
+	mul.f64 	%fd11, %fd5, %fd10;
+	sub.f64 	%fd12, %fd6, %fd9;
+	mul.f64 	%fd13, %fd2, %fd12;
+	sub.f64 	%fd14, %fd13, %fd11;
+	sub.f64 	%fd15, %fd3, %fd6;
+	mad.rn.f64 	%fd16, %fd8, %fd15, %fd14;
+	sub.f64 	%fd17, %fd2, %fd8;
+	mul.f64 	%fd18, %fd4, %fd17;
+	sub.f64 	%fd19, %fd5, %fd8;
+	mul.f64 	%fd20, %fd1, %fd19;
+	sub.f64 	%fd21, %fd20, %fd18;
+	sub.f64 	%fd22, %fd2, %fd5;
+	mad.rn.f64 	%fd23, %fd7, %fd22, %fd21;
+	sub.f64 	%fd24, %fd1, %fd7;
+	mul.f64 	%fd25, %fd6, %fd24;
+	sub.f64 	%fd26, %fd4, %fd7;
+	mul.f64 	%fd27, %fd3, %fd26;
+	sub.f64 	%fd28, %fd27, %fd25;
+	sub.f64 	%fd29, %fd1, %fd4;
+	mad.rn.f64 	%fd30, %fd9, %fd29, %fd28;
+	mul.f64 	%fd31, %fd16, %fd16;
+	mad.rn.f64 	%fd32, %fd23, %fd23, %fd31;
+	mad.rn.f64 	%fd33, %fd30, %fd30, %fd32;
+	cvt.rn.f32.f64 	%f1, %fd33;
+	sqrt.approx.f32 	%f2, %f1;
+	cvt.f64.f32 	%fd34, %f2;
+	mov.f64 	%fd35, 0d3fe0000000000000;	// 0.5
+	mul.f64 	%fd36, %fd34, %fd35;
+	ld.param.u64 	%rd15, [__cudaparm_surface_area_partial_area];
+	cvt.s64.s32 	%rd16, %r3;
+	mul.wide.s32 	%rd17, %r3, 8;
+	add.u64 	%rd18, %rd15, %rd17;
+	st.global.f64 	[%rd18+0], %fd36;
+$Lt_0_1026:
+	.loc	15	40	0
+	exit;
+$LDWend_surface_area:
+	} // surface_area
+
+	.entry multiply (
+		.param .s32 __cudaparm_multiply_sizeB,
+		.param .s32 __cudaparm_multiply_max,
+		.param .f64 __cudaparm_multiply_w1,
+		.param .u64 __cudaparm_multiply_A_indexs,
+		.param .u64 __cudaparm_multiply_A_values,
+		.param .u64 __cudaparm_multiply_B,
+		.param .u64 __cudaparm_multiply_C,
+		.param .u64 __cudaparm_multiply_Displacement)
+	{
+	.reg .u16 %rh<4>;
+	.reg .u32 %r<14>;
+	.reg .u64 %rd<20>;
+	.reg .f64 %fd<9>;
+	.reg .pred %p<5>;
+	.loc	15	43	0
+$LDWbegin_multiply:
+	mov.u16 	%rh1, %ctaid.x;
+	mov.u16 	%rh2, %ntid.x;
+	mul.wide.u16 	%r1, %rh1, %rh2;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm_multiply_sizeB];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_1_2050;
+	ld.param.s32 	%r5, [__cudaparm_multiply_max];
+	mov.u32 	%r6, 0;
+	setp.le.s32 	%p2, %r5, %r6;
+	@%p2 bra 	$Lt_1_3586;
+	ld.param.s32 	%r5, [__cudaparm_multiply_max];
+	mov.s32 	%r7, %r5;
+	mul.lo.s32 	%r8, %r5, %r3;
+	mov.s32 	%r9, %r8;
+	add.s32 	%r10, %r8, %r5;
+	cvt.s64.s32 	%rd1, %r8;
+	ld.param.u64 	%rd2, [__cudaparm_multiply_A_values];
+	mul.wide.s32 	%rd3, %r8, 8;
+	add.u64 	%rd4, %rd2, %rd3;
+	ld.param.u64 	%rd5, [__cudaparm_multiply_A_indexs];
+	mul.wide.s32 	%rd6, %r8, 4;
+	add.u64 	%rd7, %rd5, %rd6;
+	ld.param.u64 	%rd8, [__cudaparm_multiply_B];
+	mov.f64 	%fd1, 0d0000000000000000;	// 0
+	mov.s32 	%r11, %r7;
+$Lt_1_3074:
+ //<loop> Loop body line 43, nesting depth: 1, estimated iterations: unknown
+	.loc	15	52	0
+	ld.global.f64 	%fd2, [%rd4+0];
+	ld.global.s32 	%r12, [%rd7+0];
+	cvt.s64.s32 	%rd9, %r12;
+	mul.wide.s32 	%rd10, %r12, 8;
+	.loc	15	43	0
+	ld.param.u64 	%rd8, [__cudaparm_multiply_B];
+	.loc	15	52	0
+	add.u64 	%rd11, %rd8, %rd10;
+	ld.global.f64 	%fd3, [%rd11+0];
+	mad.rn.f64 	%fd1, %fd2, %fd3, %fd1;
+	add.s32 	%r9, %r9, 1;
+	add.u64 	%rd7, %rd7, 4;
+	add.u64 	%rd4, %rd4, 8;
+	setp.ne.s32 	%p3, %r9, %r10;
+	@%p3 bra 	$Lt_1_3074;
+	bra.uni 	$Lt_1_2562;
+$Lt_1_3586:
+	ld.param.u64 	%rd8, [__cudaparm_multiply_B];
+	mov.f64 	%fd1, 0d0000000000000000;	// 0
+$Lt_1_2562:
+	.loc	15	54	0
+	cvt.s64.s32 	%rd12, %r3;
+	mul.wide.s32 	%rd13, %r3, 8;
+	add.u64 	%rd14, %rd13, %rd8;
+	ld.global.f64 	%fd4, [%rd14+0];
+	ld.param.f64 	%fd5, [__cudaparm_multiply_w1];
+	mad.rn.f64 	%fd1, %fd4, %fd5, %fd1;
+	.loc	15	55	0
+	ld.param.u64 	%rd15, [__cudaparm_multiply_C];
+	add.u64 	%rd16, %rd15, %rd13;
+	st.global.f64 	[%rd16+0], %fd1;
+	.loc	15	57	0
+	ld.global.f64 	%fd6, [%rd14+0];
+	sub.f64 	%fd7, %fd6, %fd1;
+	ld.param.u64 	%rd17, [__cudaparm_multiply_Displacement];
+	add.u64 	%rd18, %rd17, %rd13;
+	st.global.f64 	[%rd18+0], %fd7;
+$Lt_1_2050:
+	.loc	15	59	0
+	exit;
+$LDWend_multiply:
+	} // multiply
+

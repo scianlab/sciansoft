@@ -1,0 +1,6 @@
+MODULE where_xyz_arr
+DESCRIPTION where_xyz_arr function
+VERSION 1.0
+SOURCE IDL
+BUILD_DATE AUG 15 2006
+FUNCTION	where_xyz_arr	0	IDL_MAXPARAMS

@@ -1,0 +1,4 @@
+LIBRARY			dlm_wrapper
+DESCRIPTION		'dlm_wrapper'
+
+EXPORTS			IDL_Load		@1

@@ -1,0 +1,4 @@
+LIBRARY			LoadMe
+DESCRIPTION		'Demonstrates use of IDL Dynamic Loadable Modules'
+
+EXPORTS			IDL_Load		@1

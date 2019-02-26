@@ -1,0 +1,6 @@
+MODULE tsnakeslib
+DESCRIPTION Module implementing the T-Snakes algorithm
+VERSION 1.0
+SOURCE IDL
+BUILD_DATE JUL 31 2010
+FUNCTION	EVOLVE_SNAKES	0	100
